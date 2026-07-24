@@ -10,7 +10,7 @@
     <input type="text" name="username">
     <br><br>
 
-    Enter Password:
+    Enter password:
     <input type="password" name="password">
     <br><br>
 
@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Create cookies for 1 day
+
     setcookie("username", $username, time() + 86400);
     setcookie("password", $password, time() + 86400);
 
@@ -33,3 +33,18 @@ if (isset($_POST['submit'])) {
 
 </body>
 </html>
+
+<?php 
+
+    session_start();
+
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+
+    $_SESSION['name']=$username;
+    header('location: homepage.php');
+
+    }
